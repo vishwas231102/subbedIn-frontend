@@ -219,7 +219,7 @@ export default{
 
 #alert{
   top: 0.5vh;
-  height: 5vh;
+  height: 6vh;
   width: 99.5%;
   display: flex;
   position: fixed;
