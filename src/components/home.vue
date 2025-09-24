@@ -12,7 +12,7 @@
         <button id="leave-suggestion" class="btns" @click="updateCheck">Leave a suggestion</button>
     </div>
     <transition name="fade">
-      <div id="alert">
+      <div v-if="alertText" id="alert">
         <span>{{ alertText }}</span>
     </div>
     </transition>
