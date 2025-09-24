@@ -11,9 +11,11 @@
         <button id="enroll" class="btns" @click="updateCheck">Enroll now</button>
         <button id="leave-suggestion" class="btns" @click="updateCheck">Leave a suggestion</button>
     </div>
-    <div v-if="alertText" id="alert">
-      <span>{{ alertText }}</span>
+    <transition name="fade">
+      <div id="alert">
+        <span>{{ alertText }}</span>
     </div>
+    </transition>
     <form v-show="enrollCheck" id="enroll-form" class="form" @submit.prevent="sendData">
         <h1 class="header" style="font-size: 2em;">Enroll to SubbedIn</h1>
         <span class="text" style="font-size: 1em;font-weight: medium;">Be the first to be notified when SubbedIn launches !</span><br>
@@ -131,9 +133,9 @@ export default{
 
 .container{
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 #theme{
@@ -223,23 +225,8 @@ export default{
   position: fixed;
   flex-direction: row;
   align-items: center;
-  animation-name: fadeIn;
   justify-content: center;
-  animation-duration: 5s;
   background-color: whitesmoke;
-  animation-timing-function: ease-in;
-}
-
-@keyframes fadeIn{
-  0%{
-    opacity: 0;
-  }
-  50%{
-    opacity: 1;
-  }
-  100%{
-    opacity: 0%;
-  }
 }
 
 #alert>span{
@@ -247,6 +234,14 @@ export default{
   font-weight: bold;
   color: darkgrey;
   font-family: 'Montserrat';
+}
+
+.fade-enter-from, .fade-leave-to{
+  opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active{
+  transition: opacity 1s ease;
 }
 
 .form{
