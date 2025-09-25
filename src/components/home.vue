@@ -221,6 +221,7 @@ export default{
   top: 0.5vh;
   height: 6vh;
   width: 99.5%;
+  opacity: 0.7;
   display: flex;
   position: fixed;
   flex-direction: row;
