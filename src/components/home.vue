@@ -58,7 +58,7 @@
         <widget_card :img_path="network_img" title="Community network" description="Create a strong, valuable network within the sports management community. Connect with professionals, share knowledge, foster collaborations, and cultivate relationships that support career growth and industry opportunities."></widget_card>
     </div>
 
-    <span id="footer" class="text" style="font-size: clamp(0.55em,1.25vw,2em);font-weight: bold;">Got a question ? We are just an email away : <span style="color: rgb(0, 123, 255);">contact@subbedin.com</span></span>
+    <span id="footer" class="text" style="font-size: clamp(0.55em,1.25vw,2em);font-weight: bold;">Got a question ? We are just an email away :<span style="color: rgb(0, 123, 255);"> contact@subbedin.com </span></span>
   </div>
 </template>
 
@@ -237,10 +237,10 @@ export default{
 }
 
 #alert>span{
-  font-size: 1em;
   font-weight: bold;
   color: darkgrey;
   font-family: 'Montserrat';
+  font-size: clamp(1em,1vw,1em);
 }
 
 .fade-enter-from, .fade-leave-to{
