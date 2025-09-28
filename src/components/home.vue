@@ -240,7 +240,7 @@ export default{
   font-weight: bold;
   color: darkgrey;
   font-family: 'Montserrat';
-  font-size: clamp(0.5em,0.5vw,1em);
+  font-size: clamp(0.5em,1vw,1em);
 }
 
 .fade-enter-from, .fade-leave-to{
