@@ -1,53 +1,64 @@
 <template>
   <div class="container">
     <div id="theme">
-      <h1 class="header" style="font-size: 10em;opacity: 0.5;">SubbedIn</h1>
-      <p class="text" style="font-style: italic;font-size: 1.75em;margin-top: 2.5vh;margin-bottom: 5vh;opacity: 0.5;">You've spent enough time on the bench, get SubbedIn now !</p>
+      <h1 class="header" style="font-size: clamp(3.5em,10vw,10em);opacity: 0.5;">SubbedIn</h1>
+      <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.85em,2vw,5em);margin-top: 2.5vh;margin-bottom: 5vh;opacity: 0.5;text-align: center;">You've spent enough time on the bench, get SubbedIn now !</p>
     </div>
-    <h1 class="header">Coming Soon</h1>
-    <p class="text">The ultimate community platform for sports management professionals</p>
-    <p class="text">Connect, collaborate and advance your career in sports management</p>
+
+    <h1 class="header" style="font-size: clamp(2em,4vw,5em);">Coming Soon</h1>
+    <p class="text" style="text-align: center;margin-right: 1vh;margin-left: 1vw;font-size: clamp(0.75em,1.5vw,5em)">The ultimate community platform for sports management professionals</p>
+    <p class="text" style="text-align: center;margin-right: 1vh;margin-left: 1vw;font-size: clamp(0.75em,1.5vw,5em)">Connect, collaborate and advance your career in sports management</p>
+
     <div class="btn-container">
         <button id="enroll" class="btns" @click="updateCheck">Enroll now</button>
         <button id="leave-suggestion" class="btns" @click="updateCheck">Leave a suggestion</button>
     </div>
+
     <transition name="fade">
       <div v-if="alertText" id="alert">
         <span>{{ alertText }}</span>
     </div>
     </transition>
+
     <form v-show="enrollCheck" id="enroll-form" class="form" @submit.prevent="sendData">
-        <h1 class="header" style="font-size: 2em;">Enroll to SubbedIn</h1>
-        <span class="text" style="font-size: 1em;font-weight: medium;">Be the first to be notified when SubbedIn launches !</span><br>
+        <h1 class="header" style="font-size: clamp(1em,5.5vw,2em);">Enroll to SubbedIn</h1>
+        <span class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: medium;">Be the first to be notified when SubbedIn launches</span><br>
         <div class="input-container">
-          <label for="name" class="text" style="font-size: 1em;font-weight: bold;">Full name</label>
-          <input id="name" class="input" type="text" v-model="name" placeholder="Enter you full name here ( e.g John Doe )" required />
+          <label for="name" class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: bold;">Full name</label>
+          <input id="name" class="input" type="text" v-model="name" placeholder="Enter you full name here ( e.g John Doe )" style="font-size: clamp(0.5em,3vw,0.85em);" required />
         </div>
         <div class="input-container">
-          <label for="email" class="text" style="font-size: 1em;font-weight: bold;">Email address</label>
-          <input id="email" class="input" type="email" v-model="email" placeholder="Enter your email address here ( e.g johndoe@xyz.com )" required/>
+          <label for="email" class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: bold;">Email address</label>
+          <input id="email" class="input" type="email" v-model="email" placeholder="Enter your email address here ( e.g johndoe@xyz.com )"
+          style="font-size: clamp(0.5em,3vw,0.85em);" required/>
         </div>
         <button class="submit-btn btns" type="submit">Click to submit</button>
     </form>
+
     <form v-show="suggestionCheck" id="suggestion-form" class="form" @submit.prevent="sendData">
-      <h1 class="header" style="font-size: 2em;">Leave a suggestion</h1>
-      <span class="text" style="font-size: 1em;font-weight: medium;">Leave a suggestion to help us grow SubbedIn !</span><br>
+      <h1 class="header" style="font-size: clamp(1em,5.5vw,2em);">Leave a suggestion</h1>
+      <span class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: medium;">Leave your suggestions to help us improve SubbedIn</span><br>
       <div class="input-container">
-        <label for="email" class="text" style="font-size: 1em;font-weight: bold;">Email address</label>
-        <input id="email" class="input" type="email" v-model="email" placeholder="Enter your email address here ( e.g johndoe@xyz.com )" required/>
+        <label for="email" class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: bold;">Email address</label>
+        <input id="email" class="input" type="email" v-model="email" placeholder="Enter your email address here ( e.g johndoe@xyz.com )"
+        style="font-size: clamp(0.5em,3vw,0.85em);" required/>
       </div>
       <div class="input-container">
-        <label for="suggestion" class="text" style="font-size: 1em;font-weight: bold;">Your suggestion</label>
-        <input id="suggestion" class="input" type="text" v-model="suggestion" placeholder="Enter you suggestion here ( Character limit : 250 )" maxlength="250" required>
+        <label for="suggestion" class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: bold;">Your suggestion</label>
+        <input id="suggestion" class="input" type="text" v-model="suggestion" placeholder="Enter you suggestion here ( e.g A search bar for new events )" style="font-size: clamp(0.5em,3vw,0.85em);" maxlength="250" required>
         </div>
         <button class="submit-btn btns" type="submit">Click to submit</button>
     </form>
-    <h1 class="header" style="margin-bottom: 0%;">What's coming to SubbedIn ?</h1>
+
+    <h1 class="header" style="margin-bottom: 0%;font-size: clamp(2em,4vw,5em);">What’s coming to SubbedIn ?</h1>
+    
     <div class="widget-container">
-        <widget_card :img_path="job_img" title="Job opportunities" description="Seamlessly search and apply for sports management jobs with ease"></widget_card>
-        <widget_card :img_path="sessionTalk_img" title="Real conversations" description="Have honest discussions about the industry with fellow professionals"></widget_card>
-        <widget_card :img_path="network_img" title="Community network" description="Build a meaningful network within the sports management community"></widget_card>
+        <widget_card :img_path="job_img" title="Job opportunities" description="Effortlessly discover and apply for sports management opportunities. Streamline your job hunt, explore tailored roles, and connect with top employers—all in one place for a smooth, stress-free experience."></widget_card>
+        <widget_card :img_path="sessionTalk_img" title="Real conversations" description="Engage in open, transparent conversations about the industry with peers. Share insights, exchange experiences, and build meaningful professional connections that foster learning, growth, and collaboration."></widget_card>
+        <widget_card :img_path="network_img" title="Community network" description="Create a strong, valuable network within the sports management community. Connect with professionals, share knowledge, foster collaborations, and cultivate relationships that support career growth and industry opportunities."></widget_card>
     </div>
+
+    <span id="footer" class="text" style="font-size: clamp(0.55em,1.25vw,2em);font-weight: bold;">Got a question ? We are just an email away : <span style="color: rgb(0, 123, 255);">contact@subbedin.com</span></span>
   </div>
 </template>
 
@@ -126,10 +137,6 @@ export default{
 </script>
 
 <style scoped>
-#logo{
-  width: 35%;
-  height: 10%;
-}
 
 .container{
   display: flex;
@@ -151,12 +158,12 @@ export default{
 
 #theme::before{
   content: "";
-  opacity: 0.25;
+  opacity: 0.35;
   top: 0; left: 0;
   position: absolute;
   right: 0; bottom: 0;
   background-size: cover;
-  background-position: center;
+  background-position: 15%;
   background-repeat: no-repeat;
   background-image: url("../assets/home/theme_bkgd.png");
 }
@@ -167,48 +174,48 @@ export default{
 }
 
 .header{
-  font-size: 4em;
-  margin-top: 3vh;
-  margin-top: 3vh;
+  margin-top: 3.5vh;
   font-weight: bold;
-  margin-bottom: 3vh;
+  margin-bottom: 3.5vh;
   text-align: center;
   background-clip: text;
   font-family: 'Poppins';
   background-color: white;
   -webkit-background-clip: text;
+  font-size: clamp(1em,10vw,4em);
   -webkit-text-fill-color: transparent;
 }
 
 .text{
-  color: white;
-  font-size: 1.25em;
   margin-top: 1vh;
+  color: white;
   margin-bottom: 1vh;
   font-family: 'Montserrat';
 }
 
 .btn-container{
+  gap: 0.5em;
+  width: 100%;
   display: flex;
   margin-top : 5.5vh;
-  margin-bottom: 5.5vh;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 5.5vh;
   justify-content: center;
 }
 
 .btns{
-  width: 15vw;
-  height: 8vh;
   border: none;
+  min-height: 8vh;
+  min-width : 12vw;
   font-weight: 650;
   color: white;
-  font-size: 1em;
   margin-left: 1.5vw;
   margin-right: 1.5vw;
   font-family: 'Montserrat';
   background-color: transparent;
   transition-property: opacity 0.5s;
+  font-size: clamp(0.75em,1vw,1.25em);
   border-bottom: 0.15em solid white;
 }
 
@@ -245,16 +252,18 @@ export default{
 }
 
 .form{
-  padding: 3.5%;
-  width: 27.5vw;
   display: flex;
-  height: 64.5vh;
+  min-width: 28vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
   margin-top: 2.5vh;
-  margin-bottom: 5vh;
+  margin-bottom: 4vh;
+  min-height: 59.5vh;
   border-radius: 10%;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
+  padding: clamp(1.75em,5vw,3em);
   background: linear-gradient(
   90deg,
   rgb(35, 35, 35),
@@ -287,20 +296,27 @@ export default{
 .submit-btn{
   margin: 0%;
   width: 100%;
-  height: 7.5vh;
   padding: 0%;
   border: none;
   margin-top: 2vh;
   color: grey;
-  margin-bottom: 1vh;
+  min-height: 8vh;
+  margin-bottom: 4.5vh;
   background: white;
 }
 
 .widget-container{
-  width: 90%;
-  display: grid;
-  margin-top: 2.5vh;
+  width: 95%;
+  display: flex;
+  margin-top: 5.5vh;
+  align-items: center;
+  margin-bottom: 5.5vh;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#footer{
+  margin-top: 5vh;
   margin-bottom: 5vh;
-  grid-template-columns: repeat(3, 1fr);
 }
 </style>

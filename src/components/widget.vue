@@ -15,42 +15,44 @@ export default{
 
 <style scoped>
 .container{
-    width: 22vw;
-    height: 55vh;
-    padding: 10%;
     display: flex;
-    margin-left: 1vw;
-    margin-right: 1vw;
-    margin-bottom: 1vh;
+    min-width: 100%;
+    min-height: 40vh;
+    margin-top: 4.5vh;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
+    margin-bottom: 4.55vh;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    padding: clamp(0.5em,1vw,2em);
     background-color: transparent;
 }
 
 .img{
-    width: 5vw;
-    height: 10vh;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+    width: clamp(4em,5vw,5em);
+    height: clamp(2em,9vh,5em);
 }
 
 .header{
-  font-size: 1.5em;
   color: white;
   margin-top: 3.5vh;
   text-align: center;
   margin-bottom: 3.5vh;
   font-family: 'Poppins';
+  font-size: clamp(1em,2vw,2em);
 }
 
 .text{
-  line-height: 1.8;  
   margin-top: 1vh;
+  line-height: 1.8;  
   color: white;
-  font-size: 1.25em;
   margin-bottom: 1vh;
   text-align: center;
   font-family: 'Montserrat';
+  width: clamp(15em,50vw,30em); 
+  font-size: clamp(1em,1.5vw,2em);
 }
 </style>
