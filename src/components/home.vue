@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div id="theme">
-      <h1 class="header" style="font-size: clamp(3.5em,10vw,10em);opacity: 0.5;">SubbedIn</h1>
+      <h1 class="header" style="font-size: clamp(3.5em,10vw,10em);opacity: 0.65;">SubbedIn</h1>
       <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.85em,2vw,5em);margin-top: 2.5vh;margin-bottom: 5vh;opacity: 0.5;text-align: center;">You've spent enough time on the bench, get SubbedIn now!</p>
     </div>
 
