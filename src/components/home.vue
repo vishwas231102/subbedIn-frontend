@@ -248,7 +248,7 @@ export default{
 }
 
 .fade-enter-active, .fade-leave-active{
-  transition: opacity 0.8s ease;
+  transition: opacity 0.5s ease;
 }
 
 .form{
