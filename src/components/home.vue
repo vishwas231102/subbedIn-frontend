@@ -150,7 +150,7 @@ export default{
   width: 100%;
   height: 100vh;
   display: flex;
-  margin-bottom: 3vh;
+  margin-bottom: 2vh;
   position: relative;
   align-items: center;
   flex-direction: column;
