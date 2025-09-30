@@ -198,10 +198,10 @@ export default{
   gap: 0.5em;
   width: 100%;
   display: flex;
-  margin-top : 5.5vh;
+  margin-top : 3.5vh;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 5.5vh;
+  margin-bottom: 3.5vh;
   justify-content: center;
 }
 
