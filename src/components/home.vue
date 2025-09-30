@@ -2,10 +2,8 @@
   <div class="container">
     <div id="theme">
       <h1 class="header" style="font-size: clamp(3.5em,10vw,10em);opacity: 0.85;">SubbedIn</h1>
-      <div>
-        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.85em,2vw,5em);margin-top: 2.5vh;margin-bottom: 5vh;opacity: 0.85;text-align: center;">You've spent enough time on the bench,</p>
-        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.85em,2vw,5em);margin-top: 2.5vh;margin-bottom: 5vh;opacity: 0.85;text-align: center;">get SubbedIn now!</p>
-      </div>
+        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.85em,2vw,5em);opacity: 0.85;text-align: center;">You've spent enough time on the bench,</p>
+        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.85em,2vw,5em);opacity: 0.85;text-align: center;">get SubbedIn now!</p>
     </div>
 
     <h1 class="header" style="font-size: clamp(2em,4vw,5em);">Coming Soon</h1>
