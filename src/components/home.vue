@@ -2,8 +2,8 @@
   <div class="container">
     <div id="theme">
       <h1 class="header" style="font-size: clamp(3.5em,10vw,10em);opacity: 0.85;margin-top: 1vh;margin-bottom: 1vh;">SubbedIn</h1>
-        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.95em,2vw,5em);opacity: 0.85;text-align: center;">You've spent enough time on the bench,</p>
-        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.95em,2vw,5em);opacity: 0.85;text-align: center;">get SubbedIn now!</p>
+        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(1em,2vw,5em);opacity: 0.85;text-align: center;margin: 0%;">You've spent enough time on the bench,</p>
+        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(1em,2vw,5em);opacity: 0.85;text-align: center;margin: 0%;">get SubbedIn now!</p>
     </div>
 
     <h1 class="header" style="font-size: clamp(2em,4vw,5em);">Coming Soon</h1>
