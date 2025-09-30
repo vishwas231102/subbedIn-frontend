@@ -150,7 +150,7 @@ export default{
   width: 100%;
   height: 100vh;
   display: flex;
-  margin-bottom: 2vh;
+  margin-bottom: 3vh;
   position: relative;
   align-items: center;
   flex-direction: column;
@@ -175,9 +175,9 @@ export default{
 }
 
 .header{
-  margin-top: 3.5vh;
+  margin-top: 2vh;
   font-weight: bold;
-  margin-bottom: 3.5vh;
+  margin-bottom: 2vh;
   text-align: center;
   background-clip: text;
   font-family: 'Poppins';
