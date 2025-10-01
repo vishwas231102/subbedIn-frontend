@@ -23,7 +23,7 @@
 
     <form v-show="enrollCheck" id="enroll-form" class="form" @submit.prevent="sendData">
         <h1 class="header" style="font-size: clamp(1em,5.5vw,2em);">Enroll to SubbedIn</h1>
-        <span class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: medium;">Be the first to be notified when SubbedIn launches</span><br>
+        <span class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: medium;text-align: center;">Be the first to be notified when SubbedIn launches</span><br>
         <div class="input-container">
           <label for="name" class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: bold;">Full name</label>
           <input id="name" class="input" type="text" v-model="name" placeholder="Enter you full name here ( e.g John Doe )" style="font-size: clamp(0.5em,3vw,0.85em);" required />
@@ -38,7 +38,7 @@
 
     <form v-show="suggestionCheck" id="suggestion-form" class="form" @submit.prevent="sendData">
       <h1 class="header" style="font-size: clamp(1em,5.5vw,2em);">Leave a suggestion</h1>
-      <span class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: medium;">Leave your suggestions to help us improve SubbedIn</span><br>
+      <span class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: medium;text-align: center;">Leave your suggestions to help us improve SubbedIn</span><br>
       <div class="input-container">
         <label for="email" class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: bold;">Email address</label>
         <input id="email" class="input" type="email" v-model="email" placeholder="Enter your email address here ( e.g johndoe@xyz.com )"
