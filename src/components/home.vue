@@ -54,7 +54,7 @@
     <h1 class="header" style="margin-bottom: 0%;font-size: clamp(2em,4vw,5em);">What’s coming to SubbedIn ?</h1>
     
     <div class="widget-container">
-        <widget_card :img_path="job_img" title="Job opportunities" description="Effortlessly discover and apply for sports management opportunities. Streamline your job hunt, explore tailored roles, and connect with top employers—all in one place for a smooth, stress-free experience."></widget_card>
+        <widget_card :img_path="job_img" title="Job opportunities" description="Effortlessly discover and apply for sports management opportunities. Streamline your job hunt, explore tailored roles, and connect with top employers all in one place for a smooth, stress-free experience."></widget_card>
         <widget_card :img_path="sessionTalk_img" title="Real conversations" description="Engage in open, transparent conversations about the industry with peers. Share insights, exchange experiences, and build meaningful professional connections that foster learning, growth, and collaboration."></widget_card>
         <widget_card :img_path="network_img" title="Community network" description="Create a strong, valuable network within the sports management community. Connect with professionals, share knowledge, foster collaborations, and cultivate relationships that support career growth and industry opportunities."></widget_card>
     </div>
