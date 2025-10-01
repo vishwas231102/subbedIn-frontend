@@ -59,7 +59,7 @@
         <widget_card :img_path="network_img" title="Community network" description="Create a strong, valuable network within the sports management community. Connect with professionals, share knowledge, foster collaborations, and cultivate relationships that support career growth and industry opportunities."></widget_card>
     </div>
     <div class="footer">
-      <span class="text" style="font-size: clamp(0.55em,1.25vw,2em);font-weight: bold;">Got a question ? We are just an email away :<span id="contactEmail" style="color: rgb(5, 75, 170);" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
+      <span class="text" style="font-size: clamp(0.65em,1.25vw,2em);font-weight: bold;">Got a question ? We are just an email away :<span id="contactEmail" style="color: rgb(5, 75, 170);" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
       <div class="socials-container">
         <button class="social" :style="{ backgroundImage: `url(${meta_logo})` }"></button>
         <button class="social" :style="{ backgroundImage: `url(${insta_logo})` }"></button>
