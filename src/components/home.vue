@@ -58,8 +58,14 @@
         <widget_card :img_path="sessionTalk_img" title="Real conversations" description="Engage in open, transparent conversations about the industry with peers. Share insights, exchange experiences, and build meaningful professional connections that foster learning, growth, and collaboration."></widget_card>
         <widget_card :img_path="network_img" title="Community network" description="Create a strong, valuable network within the sports management community. Connect with professionals, share knowledge, foster collaborations, and cultivate relationships that support career growth and industry opportunities."></widget_card>
     </div>
-    <div id="footer">
-      <span class="text" style="font-size: clamp(0.55em,1.25vw,2em);font-weight: bold;">Got a question ? We are just an email away :<span id="contactEmail" style="color: rgb(5, 70, 140);" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
+    <div class="footer">
+      <span class="text" style="font-size: clamp(0.55em,1.25vw,2em);font-weight: bold;">Got a question ? We are just an email away :<span id="contactEmail" style="color: rgb(5, 75, 170);" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
+      <div class="socials-container">
+        <button class="social" :style="{ backgroundImage: `url(${meta_logo})` }"></button>
+        <button class="social" :style="{ backgroundImage: `url(${insta_logo})` }"></button>
+        <button class="social" :style="{ backgroundImage: `url(${twitter_logo})` }"></button>
+        <button class="social" :style="{ backgroundImage: `url(${linkedin_logo})` }"></button>
+      </div>
     </div>
   </div>
 </template>
@@ -68,7 +74,11 @@
 import axios from 'axios'
 import widget_card from './widget.vue'
 import job_img from '@/assets/home/job.png'
+import meta_logo from '@/assets/home/meta.png'
+import insta_logo from '@/assets/home/insta.png'
 import network_img from '@/assets/home/network.png'
+import twitter_logo from '@/assets/home/twitter.png'
+import linkedin_logo from '@/assets/home/linkedin.png'
 import sessionTalk_img from '@/assets/home/sessionTalk.png'
 
 export default{
@@ -82,6 +92,7 @@ export default{
       enrollCheck : true,
       suggestionCheck : false,
       job_img,sessionTalk_img,network_img,
+      insta_logo,linkedin_logo,meta_logo,twitter_logo
     }
   },
   methods: {
@@ -132,7 +143,7 @@ export default{
       }
     },
     redirectToEmail(){
-      window.location.href = "mailto:contact@subbedin.com";
+      window.location.href="mailto:contact@subbedin.com";
     }
   },
   components:{
@@ -213,8 +224,8 @@ export default{
   border: none;
   min-height: 8vh;
   min-width : 12vw;
-  font-weight: 650;
   color: white;
+  font-weight: bold;
   margin-left: 1.5vw;
   margin-right: 1.5vw;
   font-family: 'Montserrat';
@@ -320,12 +331,44 @@ export default{
   justify-content: center;
 }
 
-#footer{
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+.footer{
+  width: 100%;
+  display: flex;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #contactEmail:hover{
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.socials-container{
+  width: 30%;
+  display: flex;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.social{
+  border: none;
+  min-width: 2vw;
+  min-height: 5vh;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.social:hover{
   opacity: 0.5;
   cursor: pointer;
 }
