@@ -59,7 +59,7 @@
         <widget_card :img_path="network_img" title="Community network" description="Create a strong, valuable network within the sports management community. Connect with professionals, share knowledge, foster collaborations, and cultivate relationships that support career growth and industry opportunities."></widget_card>
     </div>
 
-    <span id="footer" class="text" style="font-size: clamp(0.55em,1.25vw,2em);font-weight: bold;">Got a question ? We are just an email away :<span style="color: rgb(5, 70, 140);" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
+    <span id="footer" class="text" style="font-size: clamp(0.55em,1.25vw,2em);font-weight: bold;">Got a question ? We are just an email away :<span id="contactEmail" style="color: rgb(5, 70, 140);" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
   </div>
 </template>
 
@@ -131,6 +131,7 @@ export default{
       }
     },
     redirectToEmail(){
+      console.log("Redirecting...")
       window.location.href = "mailto:contact@subbedin.com";
     }
   },
@@ -322,5 +323,10 @@ export default{
 #footer{
   margin-top: 5vh;
   margin-bottom: 5vh;
+}
+
+#contactEmail:hover{
+  opacity: 0.5;
+  cursor: pointer;
 }
 </style>
