@@ -58,8 +58,9 @@
         <widget_card :img_path="sessionTalk_img" title="Real conversations" description="Engage in open, transparent conversations about the industry with peers. Share insights, exchange experiences, and build meaningful professional connections that foster learning, growth, and collaboration."></widget_card>
         <widget_card :img_path="network_img" title="Community network" description="Create a strong, valuable network within the sports management community. Connect with professionals, share knowledge, foster collaborations, and cultivate relationships that support career growth and industry opportunities."></widget_card>
     </div>
-
-    <span id="footer" class="text" style="font-size: clamp(0.55em,1.25vw,2em);font-weight: bold;">Got a question ? We are just an email away :<span id="contactEmail" style="color: rgb(5, 70, 140);" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
+    <div id="footer">
+      <span class="text" style="font-size: clamp(0.55em,1.25vw,2em);font-weight: bold;">Got a question ? We are just an email away :<span id="contactEmail" style="color: rgb(5, 70, 140);" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
+    </div>
   </div>
 </template>
 
