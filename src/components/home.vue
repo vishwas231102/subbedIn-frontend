@@ -2,8 +2,8 @@
   <div class="container">
     <div id="theme">
       <h1 class="header" style="font-size: clamp(3.5em,10vw,10em);opacity: 0.85;margin-top: 1vh;margin-bottom: 1vh;">SubbedIn</h1>
-        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.85em,2vw,5em);opacity: 0.85;text-align: center;margin: 0%;">You've spent enough time on the bench,</p>
-        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.85em,2vw,5em);opacity: 0.85;text-align: center;margin: 0%;">get SubbedIn now!</p>
+        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.85em,2vw,5em);opacity: 0.85;text-align: center;margin: 0.5%;">You've spent enough time on the bench,</p>
+        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.85em,2vw,5em);opacity: 0.85;text-align: center;margin: 0.5%;">get SubbedIn now!</p>
     </div>
 
     <h1 class="header" style="font-size: clamp(2em,4vw,5em);">Coming Soon</h1>
@@ -59,7 +59,7 @@
         <widget_card :img_path="network_img" title="Community network" description="Create a strong, valuable network within the sports management community. Connect with professionals, share knowledge, foster collaborations, and cultivate relationships that support career growth and industry opportunities."></widget_card>
     </div>
     <div class="footer">
-      <span class="text" style="font-size: clamp(0.65em,1.25vw,2em);font-weight: bold;">Got a question ? We are just an email away :<span id="contactEmail" style="color: rgb(5, 75, 170);" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
+      <span class="text" style="font-size: clamp(0.75em,1.25vw,2em);font-weight: bold;text-align: center;">Got a question ? Email us @<span id="contactEmail" class="text" style="color: rgb(5, 75, 170);font-size: clamp(0.75em,1.25vw,2em);font-weight: bold;text-align: center;" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
       <div class="socials-container">
         <button class="social" :style="{ backgroundImage: `url(${meta_logo})` }"></button>
         <button class="social" :style="{ backgroundImage: `url(${insta_logo})` }"></button>
