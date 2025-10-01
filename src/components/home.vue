@@ -131,7 +131,6 @@ export default{
       }
     },
     redirectToEmail(){
-      console.log("Redirecting...")
       window.location.href = "mailto:contact@subbedin.com";
     }
   },
