@@ -14,45 +14,143 @@ export default{
 </script>
 
 <style scoped>
-.container{
-    display: flex;
-    min-width: 25vw;
-    min-height: 40vh;
-    margin-top: 4.5vh;
-    margin-left: 1.5vw;
-    margin-right: 1.5vw;
-    align-items: center;
-    margin-bottom: 4.55vh;
-    flex-direction: column;
-    justify-content: center;
-    padding: clamp(0.5em,1vw,2em);
-    background-color: transparent;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2.5rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
 }
 
-.img{
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
-    width: clamp(4em,5vw,5em);
-    height: clamp(2em,9vh,5em);
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.6s;
 }
 
-.header{
+.container:hover::before {
+  left: 100%;
+}
+
+.container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 2rem;
+  object-fit: contain;
+  filter: brightness(1.1);
+  transition: all 0.3s ease;
+}
+
+.container:hover .img {
+  transform: scale(1.1);
+  filter: brightness(1.3);
+}
+
+.header {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   color: white;
-  margin-top: 3.5vh;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 3.5vh;
-  font-family: 'Poppins';
-  font-size: clamp(1em,2vw,2em);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
-.text{
-  margin-top: 1vh;
-  line-height: 1.8;  
-  color: white;
-  margin-bottom: 1vh;
+.text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  line-height: 1.7;
   text-align: center;
-  font-family: 'Montserrat';
-  width: clamp(25em,20vw,30em); 
-  font-size: clamp(0.8em,1.5vw,2em);
+  font-weight: 400;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1.5rem;
+    min-height: 350px;
+  }
+  
+  .img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .header {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem 1rem;
+    min-height: 320px;
+  }
+  
+  .img {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    transition: none;
+  }
+  
+  .container:hover {
+    transform: none;
+  }
+  
+  .container::before {
+    display: none;
+  }
+  
+  .img {
+    transition: none;
+  }
+  
+  .container:hover .img {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .container {
+    border: 2px solid white;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  .text {
+    color: white;
+  }
 }
 </style>

@@ -1,55 +1,142 @@
 <template>
-  <div class="container">
-    <div id="theme">
-      <h1 class="header" style="font-size: clamp(3.5em,10vw,10em);opacity: 0.85;margin-top: 1vh;margin-bottom: 1vh;">SubbedIn</h1>
-        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.85em,2vw,5em);opacity: 0.85;text-align: center;margin: 0.5%;">You've spent enough time on the bench,</p>
-        <p class="text" style="font-style: italic;font-weight: bold;font-size: clamp(0.85em,2vw,5em);opacity: 0.85;text-align: center;margin: 0.5%;">get SubbedIn now!</p>
-    </div>
+  <div class="page-wrapper">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-background"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">SubbedIn</h1>
+          <div class="hero-subtitle">
+            <p>You've spent enough time on the bench,</p>
+            <p>get SubbedIn now!</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <h1 class="header" style="font-size: clamp(2em,4vw,5em);">Coming Soon</h1>
-    <p class="text" style="text-align: center;margin-right: 1vh;margin-left: 1vw;font-size: clamp(0.75em,1.5vw,5em)">The ultimate community platform for sports management professionals</p>
-    <p class="text" style="text-align: center;margin-right: 1vh;margin-left: 1vw;font-size: clamp(0.75em,1.5vw,5em)">Connect, collaborate and advance your career in sports management</p>
+    <div style="background: linear-gradient(90deg,black,rgb(110,110,110));">
+    <!-- Coming Soon Section -->
+    <section class="coming-soon-section">
+      <div class="container">
+        <div class="section-content">
+          <h2 class="section-title">Coming Soon</h2>
+          <div class="section-description">
+            <p>The ultimate community platform for sports management professionals</p>
+            <p>Connect, collaborate and advance your career in sports management</p>
+          </div>
 
-    <div class="btn-container">
-        <button id="enroll" class="btns" @click="updateCheck">Enroll now</button>
-        <button id="leave-suggestion" class="btns" @click="updateCheck">Leave a suggestion</button>
-    </div>
+          <div class="cta-buttons">
+            <button 
+              id="enroll" 
+              class="btn btn-primary" 
+              :class="{ active: enrollCheck }"
+              @click="updateCheck"
+            >
+              Enroll Now
+            </button>
+            <button 
+              id="leave-suggestion" 
+              class="btn btn-secondary" 
+              :class="{ active: suggestionCheck }"
+              @click="updateCheck"
+            >
+              Leave a Suggestion
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Alert Notification -->
     <transition name="fade">
-      <div v-if="alertText" id="alert">
-        <span>{{ alertText }}</span>
-    </div>
+      <div v-if="alertText" class="alert-notification">
+        <div class="alert-content">
+          <span>{{ alertText }}</span>
+        </div>
+      </div>
     </transition>
 
-    <form v-show="enrollCheck" id="enroll-form" class="form" @submit.prevent="sendData">
-        <h1 class="header" style="font-size: clamp(1em,5.5vw,2em);">Enroll to SubbedIn</h1>
-        <span class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: medium;text-align: center;">Be the first to be notified when SubbedIn launches</span><br>
-        <div class="input-container">
-          <label for="name" class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: bold;">Full name</label>
-          <input id="name" class="input" type="text" v-model="name" placeholder="Enter you full name here ( e.g John Doe )" style="font-size: clamp(0.5em,3vw,0.85em);" required />
-        </div>
-        <div class="input-container">
-          <label for="email" class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: bold;">Email address</label>
-          <input id="email" class="input" type="email" v-model="email" placeholder="Enter your email address here ( e.g johndoe@xyz.com )"
-          style="font-size: clamp(0.5em,3vw,0.85em);" required/>
-        </div>
-        <button class="submit-btn btns" type="submit">Click to submit</button>
-    </form>
+    <!-- Forms Section -->
+    <section class="forms-section" v-if="enrollCheck || suggestionCheck">
+      <div class="container">
+        <!-- Enrollment Form -->
+        <form v-show="enrollCheck" id="enroll-form" class="modern-form" @submit.prevent="sendData">
+          <div class="form-header">
+            <h2 class="form-title">Join SubbedIn</h2>
+            <p class="form-subtitle">Be the first to be notified when SubbedIn launches</p>
+          </div>
+          
+          <div class="form-body">
+            <div class="form-group">
+              <label for="name" class="form-label">Full Name</label>
+              <input 
+                id="name" 
+                class="form-input" 
+                type="text" 
+                v-model="name" 
+                placeholder="Enter your full name (e.g., John Doe)" 
+                required 
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input 
+                id="email" 
+                class="form-input" 
+                type="email" 
+                v-model="email" 
+                placeholder="Enter your email address (e.g., john@example.com)" 
+                required
+              />
+            </div>
+            
+            <button class="btn btn-primary form-submit" type="submit">
+              Submit Enrollment
+            </button>
+          </div>
+        </form>
 
-    <form v-show="suggestionCheck" id="suggestion-form" class="form" @submit.prevent="sendData">
-      <h1 class="header" style="font-size: clamp(1em,5.5vw,2em);">Leave a suggestion</h1>
-      <span class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: medium;text-align: center;">Leave your suggestions to help us improve SubbedIn</span><br>
-      <div class="input-container">
-        <label for="email" class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: bold;">Email address</label>
-        <input id="email" class="input" type="email" v-model="email" placeholder="Enter your email address here ( e.g johndoe@xyz.com )"
-        style="font-size: clamp(0.5em,3vw,0.85em);" required/>
+        <!-- Suggestion Form -->
+        <form v-show="suggestionCheck" id="suggestion-form" class="modern-form" @submit.prevent="sendData">
+          <div class="form-header">
+            <h2 class="form-title">Share Your Ideas</h2>
+            <p class="form-subtitle">Help us improve SubbedIn with your suggestions</p>
+          </div>
+          
+          <div class="form-body">
+            <div class="form-group">
+              <label for="suggestion-email" class="form-label">Email Address</label>
+              <input 
+                id="suggestion-email" 
+                class="form-input" 
+                type="email" 
+                v-model="email" 
+                placeholder="Enter your email address" 
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="suggestion" class="form-label">Your Suggestion</label>
+              <textarea 
+                id="suggestion" 
+                class="form-input form-textarea" 
+                v-model="suggestion" 
+                placeholder="Share your ideas (e.g., A search bar for new events)" 
+                maxlength="250" 
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            
+            <button class="btn btn-primary form-submit" type="submit">
+              Submit Suggestion
+            </button>
+          </div>
+        </form>
       </div>
-      <div class="input-container">
-        <label for="suggestion" class="text" style="font-size: clamp(0.5em,3vw,1em);font-weight: bold;">Your suggestion</label>
-        <input id="suggestion" class="input" type="text" v-model="suggestion" placeholder="Enter you suggestion here ( e.g A search bar for new events )" style="font-size: clamp(0.5em,3vw,0.85em);" maxlength="250" required>
-        </div>
-        <button class="submit-btn btns" type="submit">Click to submit</button>
-    </form>
+    </section>
 
     <h1 class="header" style="margin-bottom: 0%;font-size: clamp(2em,4vw,5em);">What’s coming to SubbedIn ?</h1>
     
@@ -68,6 +155,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -162,223 +250,386 @@ export default{
 </script>
 
 <style scoped>
-
-.container{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+/* Page wrapper */
+.page-wrapper {
+  width: 100%;
+  min-height: 100vh;
 }
 
-#theme{
-  width: 100%;
+/* Hero Section */
+.hero-section {
+  position: relative;
   height: 100vh;
   display: flex;
-  margin-bottom: 3vh;
-  position: relative;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
+  overflow: hidden;
 }
 
-#theme::before{
-  content: "";
-  opacity: 0.35;
-  top: 0; left: 0;
+.hero-background {
   position: absolute;
-  right: 0; bottom: 0;
-  background-size: cover;
-  background-position: 15%;
-  background-repeat: no-repeat;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url("../assets/home/theme_bkgd.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: -1;
 }
 
-#theme>h1{
-  color: white;
-  position: relative;
-}
-
-.header{
-  margin-top: 2vh;
-  font-weight: bold;
-  margin-bottom: 2vh;
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  background-clip: text;
-  font-family: 'Poppins';
-  background-color: white;
-  -webkit-background-clip: text;
-  font-size: clamp(1em,10vw,4em);
-  -webkit-text-fill-color: transparent;
-}
-
-.text{
-  margin-top: 1vh;
-  color: white;
-  margin-bottom: 1vh;
-  font-family: 'Montserrat';
-}
-
-.btn-container{
-  gap: 0.5em;
+  z-index: 1;
+  max-width: 800px;
   width: 100%;
+  padding: 0 20px;
   display: flex;
-  margin-top : 3.5vh;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 3.5vh;
   justify-content: center;
 }
 
-.btns{
-  border: none;
-  min-height: 8vh;
-  min-width : 12vw;
+.hero-title {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
   color: white;
-  font-weight: bold;
-  margin-left: 1.5vw;
-  margin-right: 1.5vw;
-  font-family: 'Montserrat';
-  background-color: transparent;
-  transition-property: opacity 0.5s;
-  font-size: clamp(0.75em,1vw,1.25em);
-  border-bottom: 0.15em solid white;
+  margin: 0 auto 2rem auto;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
+  text-align: center;
+  width: 100%;
 }
 
-.btns:hover{
-  opacity: 0.65;
+.hero-subtitle {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 auto 3rem auto;
+  line-height: 1.4;
+  text-align: center;
+  width: 100%;
+}
+
+.hero-subtitle p {
+  margin: 0.5rem auto;
+  text-align: center;
+}
+
+/* Coming Soon Section */
+.coming-soon-section {
+  padding: 1rem 0;
+}
+
+.section-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.section-description {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.section-description p {
+  margin: 1rem 0;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+/* Alert Notification */
+.alert-notification {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  max-width: 90%;
+  width: auto;
+}
+
+.alert-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.alert-content span {
+  color: #333;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Forms Section */
+.forms-section {
+  padding: 1rem 0;
+}
+
+.modern-form {
+  max-width: 450px;
+  min-height: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  border-radius: 24px;
+  padding: 3.5rem 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  flex-shrink: 0;
+}
+
+.form-title {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.2rem;
+}
+
+.form-subtitle {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+.form-body {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Features Section */
+.header {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin: 4rem 0 3rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  padding: 0 1rem;
+}
+
+.widget-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Footer */
+.footer {
+  padding: 4rem 0 2rem;
+  text-align: center;
+}
+
+.footer .text {
+  color: white;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+#contactEmail {
+  color: #667eea;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-#alert{
-  top: 0.5vh;
-  height: 6vh;
-  width: 99.5%;
+#contactEmail:hover {
+  color: #764ba2;
+  text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+.socials-container {
   display: flex;
-  position: fixed;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
-  background-color: whitesmoke;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
-#alert>span{
-  font-weight: bold;
-  color: darkgrey;
-  font-family: 'Montserrat';
-  font-size: clamp(0.5em,1vw,1em);
+.social {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  background-size: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.fade-enter-from, .fade-leave-to{
+.social:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 0 1rem;
+    max-width: 90%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .cta-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .modern-form {
+    margin: 0 1rem;
+    padding: 2.5rem 1.8rem;
+    max-width: 400px;
+    min-height: 550px;
+  }
+  
+  .widget-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .socials-container {
+    gap: 1rem;
+  }
+  
+  .social {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: 90vh;
+  }
+  
+  .coming-soon-section {
+    padding: 4rem 0;
+  }
+  
+  .forms-section {
+    padding: 3rem 0;
+  }
+  
+  .modern-form {
+    padding: 2rem 1.2rem;
+    max-width: 350px;
+    min-height: 500px;
+  }
+  
+  .footer {
+    padding: 3rem 0 1.5rem;
+  }
+  
+  .alert-notification {
+    top: 1rem;
+    max-width: 95%;
+  }
+  
+  .alert-content {
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* Animation improvements */
+.fade-enter-from, .fade-leave-to {
   opacity: 0;
 }
 
-.fade-enter-active, .fade-leave-active{
-  transition: opacity 0.5s ease;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form{
-  display: flex;
-  min-width: 28vw;
-  margin-left: 5vw;
-  margin-right: 5vw;
-  margin-top: 2.5vh;
-  margin-bottom: 4vh;
-  min-height: 59.5vh;
-  border-radius: 10%;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: clamp(1.75em,5vw,3em);
-  background: linear-gradient(
-  90deg,
-  rgb(35, 35, 35),
-  rgb(100,100,100)
-  );
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .social:hover {
+    transform: none;
+  }
+  
+  .btn-primary:hover {
+    transform: none;
+  }
+  
+  .form-input:focus {
+    transform: none;
+  }
 }
 
-.input-container{
-  width: 100%;
-  display: flex;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.input{
-  width: 100%;
-  height: 5vh;
-  padding: 0%;
-  border: none;
-  outline: none;
-  color: white;
-  font-family: 'Montserrat';
-  background-color: transparent;
-  border-bottom: 0.1em solid white;
-}
-
-.submit-btn{
-  margin: 0%;
-  width: 100%;
-  padding: 0%;
-  border: none;
-  margin-top: 2vh;
-  color: grey;
-  min-height: 8vh;
-  margin-bottom: 4.5vh;
-  background: white;
-}
-
-.widget-container{
-  width: 95%;
-  display: flex;
-  margin-top: 5.5vh;
-  align-items: center;
-  margin-bottom: 5.5vh;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.footer{
-  width: 100%;
-  display: flex;
-  margin-top: 3vh;
-  margin-bottom: 3vh;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#contactEmail:hover{
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-.socials-container{
-  width: 30%;
-  display: flex;
-  margin-top: 3vh;
-  margin-bottom: 3vh;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.social{
-  border: none;
-  min-width: 2vw;
-  min-height: 5vh;
-  margin-left: 0.5vw;
-  margin-right: 0.5vw;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: transparent;
-}
-
-.social:hover{
-  opacity: 0.5;
-  cursor: pointer;
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .hero-title,
+  .section-title,
+  .form-title {
+    text-shadow: none;
+  }
+  
+  .modern-form {
+    border: 2px solid white;
+  }
 }
 </style>
