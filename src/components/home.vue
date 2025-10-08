@@ -138,7 +138,7 @@
       </div>
     </section>
 
-    <h1 class="header" style="margin-bottom: 0%;font-size: clamp(2em,4vw,5em);">What’s coming to SubbedIn ?</h1>
+    <h1 class="header" style="margin-bottom: 2%;font-size: clamp(2em,4vw,5em);">What’s coming to SubbedIn ?</h1>
     
     <div class="widget-container">
         <widget_card :img_path="job_img" title="Job opportunities" description="Effortlessly discover and apply for sports management opportunities. Streamline your job hunt, explore tailored roles, and connect with top employers all in one place for a smooth, stress-free experience."></widget_card>
