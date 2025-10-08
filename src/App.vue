@@ -88,6 +88,7 @@ body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+  border: none;
 }
 
 .btn-primary:hover {
@@ -112,9 +113,16 @@ body {
   transform: translateY(-2px);
 }
 
-.btn.active {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.6);
+.btn-primary.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: transparent;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: transparent;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
 }
 
 /* Responsive utilities */

@@ -28,7 +28,7 @@
           <div class="cta-buttons">
             <button 
               id="enroll" 
-              class="btn btn-primary" 
+              class="btn btn-secondary" 
               :class="{ active: enrollCheck }"
               @click="updateCheck"
             >
@@ -189,20 +189,26 @@ export default{
         this.enrollCheck=true;
         this.suggestionCheck=false;
         setTimeout(() => {
-          document.querySelector('.btn-container')
-          .scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'})
+          const formsSection = document.querySelector('.forms-section');
+          if(formsSection) {
+            formsSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
         },200)
       }
       else if(event.target.id==='leave-suggestion'){
         this.suggestionCheck=true;
         this.enrollCheck=false;
         setTimeout(() => {
-          document.querySelector('.btn-container')
-          .scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'})
+          const formsSection = document.querySelector('.forms-section');
+          if(formsSection) {
+            formsSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
         },200)
       }
     },
@@ -310,7 +316,7 @@ export default{
 
 .hero-subtitle {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
   margin: 0 auto 3rem auto;
@@ -487,8 +493,7 @@ export default{
 }
 
 #contactEmail:hover {
-  color: #764ba2;
-  text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+  cursor: pointer;
 }
 
 .socials-container {

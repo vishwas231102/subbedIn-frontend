@@ -27,7 +27,7 @@ export default{
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   height: 100%;
-  min-height: 400px;
+  min-height: 350px;
   position: relative;
   overflow: hidden;
 }
@@ -70,7 +70,7 @@ export default{
 .header {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   color: white;
-  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 700;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -80,7 +80,7 @@ export default{
 
 .text {
   color: rgba(255, 255, 255, 0.9);
-  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  font-size: clamp(0.85rem, 1.4vw, 0.95rem);
   line-height: 1.7;
   text-align: center;
   font-weight: 400;
@@ -92,7 +92,7 @@ export default{
 @media (max-width: 768px) {
   .container {
     padding: 2rem 1.5rem;
-    min-height: 350px;
+    min-height: 300px;
   }
   
   .img {
@@ -108,8 +108,8 @@ export default{
 
 @media (max-width: 480px) {
   .container {
-    padding: 1.5rem 1rem;
-    min-height: 320px;
+    padding: 1.5rem 1.25rem;
+    min-height: 280px;
   }
   
   .img {
