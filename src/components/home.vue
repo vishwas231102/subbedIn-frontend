@@ -56,7 +56,7 @@
     <div class="widget-container">
         <widget_card :img_path="job_img" title="Job opportunities" description="Effortlessly discover and apply for sports management opportunities. Streamline your job hunt, explore tailored roles, and connect with top employers all in one place for a smooth, stress-free experience."></widget_card>
         <widget_card :img_path="sessionTalk_img" title="Real conversations" description="Engage in open, transparent conversations about the industry with peers. Share insights, exchange experiences, and build meaningful professional connections that foster learning, growth, and collaboration."></widget_card>
-        <widget_card :img_path="network_img" title="Community network" description="Create a strong, valuable network within the sports management community. Connect with professionals, share knowledge, foster collaborations, and cultivate relationships that support career growth and industry opportunities."></widget_card>
+        <widget_card :img_path="network_img" title="Community network" description="Create a strong, valuable network within the sports management community. Connect with professionals, share knowledge and cultivate relationships that support career growth and industry opportunities"></widget_card>
     </div>
     <div class="footer">
       <span class="text" style="font-size: clamp(0.75em,1.25vw,2em);font-weight: bold;text-align: center;">Got a question ? Email us @<span id="contactEmail" class="text" style="color: rgb(5, 75, 170);font-size: clamp(0.75em,1.25vw,2em);font-weight: bold;text-align: center;" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>

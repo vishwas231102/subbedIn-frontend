@@ -16,13 +16,13 @@ export default{
 <style scoped>
 .container{
     display: flex;
-    min-width: 100%;
+    min-width: 25vw;
     min-height: 40vh;
     margin-top: 4.5vh;
     margin-left: 1.5vw;
     margin-right: 1.5vw;
-    margin-bottom: 4.55vh;
     align-items: center;
+    margin-bottom: 4.55vh;
     flex-direction: column;
     justify-content: center;
     padding: clamp(0.5em,1vw,2em);
@@ -52,7 +52,7 @@ export default{
   margin-bottom: 1vh;
   text-align: center;
   font-family: 'Montserrat';
-  width: clamp(15em,50vw,30em); 
-  font-size: clamp(1em,1.5vw,2em);
+  width: clamp(25em,20vw,30em); 
+  font-size: clamp(0.8em,1.5vw,2em);
 }
 </style>
