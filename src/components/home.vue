@@ -280,7 +280,7 @@ export default{
   bottom: 0;
   background-image: url("../assets/home/theme_bkgd.png");
   background-size: cover;
-  background-position: center;
+  background-position: 15% center;
   background-repeat: no-repeat;
   opacity: 0.2;
   z-index: -1;
@@ -307,7 +307,7 @@ export default{
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 800;
   color: white;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 0.5rem auto;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   letter-spacing: -0.02em;
   text-align: center;
