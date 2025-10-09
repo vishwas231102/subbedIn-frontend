@@ -86,7 +86,7 @@
                 class="form-input" 
                 type="email" 
                 v-model="email" 
-                placeholder="Enter your email address (e.g., john@example.com)" 
+                placeholder="Enter your email address (e.g. john@example.com)" 
                 required
               />
             </div>
@@ -123,7 +123,7 @@
                 id="suggestion" 
                 class="form-input form-textarea" 
                 v-model="suggestion" 
-                placeholder="Share your ideas (e.g., A search bar for new events)" 
+                placeholder="Share your ideas (e.g. A search bar for new events)" 
                 maxlength="250" 
                 rows="4"
                 required
