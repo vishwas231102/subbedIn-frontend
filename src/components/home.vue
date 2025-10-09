@@ -319,6 +319,7 @@ export default{
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: clamp(1rem, 2.5vw, 1.4rem);
   font-weight: 500;
+  opacity : 0.7;
   color: rgba(255, 255, 255, 0.9);
   margin: 0 auto 3rem auto;
   line-height: 1.4;
