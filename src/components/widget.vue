@@ -19,7 +19,7 @@ export default{
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 2.5rem 2rem;
+  padding: 3rem 2.5rem;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(30px);
   border-radius: 24px;
@@ -91,7 +91,7 @@ export default{
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .container {
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 2rem;
     min-height: 300px;
   }
   
@@ -108,7 +108,7 @@ export default{
 
 @media (max-width: 480px) {
   .container {
-    padding: 1.5rem 1.25rem;
+    padding: 2rem 1.5rem;
     min-height: 280px;
   }
   
