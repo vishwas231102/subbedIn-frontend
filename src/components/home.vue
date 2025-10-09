@@ -307,6 +307,7 @@ export default{
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 800;
   color: white;
+  opacity : 0.7;
   margin: 0 auto 0.5rem auto;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   letter-spacing: -0.02em;
