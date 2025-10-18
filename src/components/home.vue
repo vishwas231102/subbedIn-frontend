@@ -148,7 +148,7 @@
     <div class="footer">
       <span class="text" style="font-size: clamp(0.75em,1.25vw,2em);font-weight: bold;text-align: center;">Got a question ? Email us @<span id="contactEmail" class="text" style="color: rgb(5, 75, 170);font-size: clamp(0.75em,1.25vw,2em);font-weight: bold;text-align: center;" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
       <div class="socials-container">
-        <button class="social" :style="{ backgroundImage: `url(${meta_logo})` }"></button>
+        <!-- <button class="social" :style="{ backgroundImage: `url(${meta_logo})` }"></button> -->
         <button class="social" :style="{ backgroundImage: `url(${twitter_logo})` }" @click="redirectToX"></button>
         <button class="social" :style="{ backgroundImage: `url(${insta_logo})` }" @click="redirectToInstagram"></button>
         <button class="social" :style="{ backgroundImage: `url(${linkedin_logo})` }" @click="redirectToLinkedIn"></button>
