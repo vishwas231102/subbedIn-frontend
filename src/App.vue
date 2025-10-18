@@ -1,14 +1,31 @@
 <template>
   <div id="app">
-    <transition name="fade">
+    <!-- Simple Loading Screen -->
+    <div v-if="isLoading" class="loading-screen">
+      <div class="spinner"></div>
+    </div>
+    
+    <!-- Main Content -->
+    <div v-else>
       <router-view/>
-    </transition>
+    </div>
   </div>
 </template>
 
 <script>
-export default{
-  name : 'App'
+export default {
+  name: 'App',
+  data() {
+    return {
+      isLoading: true
+    }
+  },
+  mounted() {
+    // Simple timeout to show loading screen briefly
+    setTimeout(() => {
+      this.isLoading = false
+    }, 1000)
+  }
 }
 </script>
 
@@ -42,7 +59,34 @@ body {
   width: 100%;
 }
 
-/* Improved fade transition */
+/* Simple Loading Screen */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Router fade transition */
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.6s ease-in-out;
 }
