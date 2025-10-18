@@ -20,11 +20,63 @@ export default {
       isLoading: true
     }
   },
-  mounted() {
-    // Simple timeout to show loading screen briefly
-    setTimeout(() => {
-      this.isLoading = false
-    }, 1000)
+  async mounted() {
+    await this.waitForCSS()
+    this.isLoading = false
+  },
+  methods: {
+    async waitForCSS() {
+      // Wait for fonts to load
+      if (document.fonts) {
+        try {
+          await document.fonts.ready
+        } catch (error) {
+          console.warn('Font loading failed:', error)
+        }
+      }
+      
+      // Wait for CSS to be applied
+      return new Promise(resolve => {
+        const checkCSS = () => {
+          // Check if our CSS is loaded by verifying computed styles
+          const app = document.getElementById('app')
+          const body = document.body
+          
+          if (app && body) {
+            const appStyles = window.getComputedStyle(app)
+            const bodyStyles = window.getComputedStyle(body)
+            
+            // Check multiple CSS properties to ensure styles are applied
+            const appMinHeight = appStyles.minHeight
+            const bodyBackground = bodyStyles.background || bodyStyles.backgroundColor
+            const bodyFontFamily = bodyStyles.fontFamily
+            
+            // Verify that our custom styles are loaded
+            if (appMinHeight === '100vh' && 
+                (bodyBackground.includes('gradient') || bodyBackground.includes('rgb')) &&
+                (bodyFontFamily.includes('Inter') || bodyFontFamily.includes('Segoe'))) {
+              resolve()
+            } else {
+              setTimeout(checkCSS, 50)
+            }
+          } else {
+            setTimeout(checkCSS, 50)
+          }
+        }
+        
+        // Start checking after DOM is ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(checkCSS, 100)
+          })
+        } else {
+          setTimeout(checkCSS, 100)
+        }
+        
+        // Fallback timeout to prevent infinite loading
+        setTimeout(resolve, 3000)
+      })
+    }
   }
 }
 </script>
