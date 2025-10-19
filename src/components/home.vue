@@ -511,7 +511,7 @@ export default{
   border: none;
   border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.1);
-  background-size: 24px;
+  background-size: 22px;
   background-position: center;
   background-repeat: no-repeat;
   backdrop-filter: blur(20px);
