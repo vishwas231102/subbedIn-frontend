@@ -162,7 +162,6 @@
 import axios from 'axios'
 import widget_card from './widget.vue'
 import job_img from '@/assets/home/job.png'
-import meta_logo from '@/assets/home/meta.png'
 import insta_logo from '@/assets/home/insta.png'
 import network_img from '@/assets/home/network.png'
 import twitter_logo from '@/assets/home/twitter.png'
