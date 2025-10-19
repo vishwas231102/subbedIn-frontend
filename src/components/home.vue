@@ -146,7 +146,7 @@
         <widget_card :img_path="network_img" title="Community network" description="Create a strong, valuable network within the sports management community. Connect with professionals, share knowledge and cultivate relationships that support career growth and industry opportunities"></widget_card>
     </div>
     <div class="footer">
-      <span class="text" style="font-size: clamp(0.75em,1.25vw,2em);font-weight: bold;text-align: center;">Got a question ? Email us @<span id="contactEmail" class="text" style="color: rgb(5, 75, 170);font-size: clamp(0.75em,1.25vw,2em);font-weight: bold;text-align: center;" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
+      <span class="contact-text">Got a question ? Email us @<span id="contactEmail" class="contact-email" @click.prevent="redirectToEmail"> contact@subbedin.com </span></span>
       <div class="socials-container">
         <!-- <button class="social" :style="{ backgroundImage: `url(${meta_logo})` }"></button> -->
         <button class="social" :style="{ backgroundImage: `url(${twitter_logo})` }" @click="redirectToX"></button>
@@ -487,13 +487,23 @@ export default{
   line-height: 1.6;
 }
 
-#contactEmail {
+/* Contact text styling */
+.contact-text {
+  color: white;
+  font-size: clamp(0.75em, 1.25vw, 2em);
+  font-weight: bold;
+  text-align: center;
+}
+
+.contact-email {
   color: #667eea;
   transition: all 0.3s ease;
   cursor: pointer;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
-#contactEmail:hover {
+.contact-email:hover {
   cursor: pointer;
 }
 
@@ -567,6 +577,11 @@ export default{
     width: 44px;
     height: 44px;
   }
+  
+  /* Larger contact email text for tablets */
+  .contact-text {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -599,6 +614,12 @@ export default{
   
   .alert-content {
     padding: 0.8rem 1.5rem;
+  }
+  
+  /* Slightly larger contact email text for mobile phones */
+  .contact-text {
+    font-size: 1.1rem;
+    line-height: 1.4;
   }
 }
 
