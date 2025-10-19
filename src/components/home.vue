@@ -179,7 +179,7 @@ export default{
       enrollCheck : true,
       suggestionCheck : false,
       job_img,sessionTalk_img,network_img,
-      insta_logo,linkedin_logo,meta_logo,twitter_logo
+      insta_logo,linkedin_logo,twitter_logo
     }
   },
   methods: {
