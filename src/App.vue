@@ -30,7 +30,7 @@ export default {
     // Add 2 second delay before rendering components
     setTimeout(() => {
       this.isLoading = false
-    }, 2000)
+    }, 1500)
   }
 }
 </script>
