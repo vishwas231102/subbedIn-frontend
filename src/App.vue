@@ -1,8 +1,14 @@
 <template>
   <div id="app">
-    <!-- Simple Loading Screen -->
+    <!-- Enhanced Loading Screen -->
     <div v-if="isLoading" class="loading-screen">
-      <div class="spinner"></div>
+      <div class="loading-content">
+        <div class="loading-logo">
+          <h1 class="loading-title">SubbedIn</h1>
+        </div>
+        <div class="spinner"></div>
+        <p class="loading-text">Loading your experience...</p>
+      </div>
     </div>
     
     <!-- Main Content -->
@@ -20,70 +26,17 @@ export default {
       isLoading: true
     }
   },
-  async mounted() {
-    await this.waitForCSS()
-    this.isLoading = false
-  },
-  methods: {
-    async waitForCSS() {
-      // Wait for fonts to load
-      if (document.fonts) {
-        try {
-          await document.fonts.ready
-        } catch (error) {
-          console.warn('Font loading failed:', error)
-        }
-      }
-      
-      // Wait for CSS to be applied
-      return new Promise(resolve => {
-        const checkCSS = () => {
-          // Check if our CSS is loaded by verifying computed styles
-          const app = document.getElementById('app')
-          const body = document.body
-          
-          if (app && body) {
-            const appStyles = window.getComputedStyle(app)
-            const bodyStyles = window.getComputedStyle(body)
-            
-            // Check multiple CSS properties to ensure styles are applied
-            const appMinHeight = appStyles.minHeight
-            const bodyBackground = bodyStyles.background || bodyStyles.backgroundColor
-            const bodyFontFamily = bodyStyles.fontFamily
-            
-            // Verify that our custom styles are loaded
-            if (appMinHeight === '100vh' && 
-                (bodyBackground.includes('gradient') || bodyBackground.includes('rgb')) &&
-                (bodyFontFamily.includes('Inter') || bodyFontFamily.includes('Segoe'))) {
-              resolve()
-            } else {
-              setTimeout(checkCSS, 50)
-            }
-          } else {
-            setTimeout(checkCSS, 50)
-          }
-        }
-        
-        // Start checking after DOM is ready
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(checkCSS, 100)
-          })
-        } else {
-          setTimeout(checkCSS, 100)
-        }
-        
-        // Fallback timeout to prevent infinite loading
-        setTimeout(resolve, 3000)
-      })
-    }
+  mounted() {
+    // Add 2 second delay before rendering components
+    setTimeout(() => {
+      this.isLoading = false
+    }, 2000)
   }
 }
 </script>
 
 <style>
-/* Import professional fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+/* Fonts loaded via HTML preload - no blocking import */
 
 /* Global styles for professional appearance */
 * {
@@ -111,7 +64,7 @@ body {
   width: 100%;
 }
 
-/* Simple Loading Screen */
+/* Enhanced Loading Screen */
 .loading-screen {
   position: fixed;
   top: 0;
@@ -122,20 +75,82 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.loading-logo {
+  margin-bottom: 2rem;
+}
+
+.loading-title {
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  color: white;
+  opacity: 0.9;
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
+  animation: fadeInUp 1s ease-out;
 }
 
 .spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top: 4px solid white;
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid rgba(102, 126, 234, 0.8);
   border-radius: 50%;
   animation: spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+}
+
+.loading-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  animation: fadeInUp 1s ease-out 0.3s both;
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading screen responsive design */
+@media (max-width: 768px) {
+  .loading-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  
+  .loading-text {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 /* Router fade transition */

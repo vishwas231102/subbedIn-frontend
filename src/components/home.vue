@@ -2,7 +2,7 @@
   <div class="page-wrapper">
     <!-- Hero Section -->
     <section class="hero-section">
-      <div class="hero-background"></div>
+      <div class="hero-background" :class="{ 'background-loaded': heroBackgroundLoaded }"></div>
       <div class="container">
         <div class="hero-content">
           <h1 class="hero-title">SubbedIn</h1>
@@ -159,7 +159,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// Lazy load non-critical resources for better LCP
 import widget_card from './widget.vue'
 import job_img from '@/assets/home/job.png'
 import insta_logo from '@/assets/home/insta.png'
@@ -178,9 +178,14 @@ export default{
       suggestion : null,
       enrollCheck : true,
       suggestionCheck : false,
+      heroBackgroundLoaded: false,
       job_img,sessionTalk_img,network_img,
       insta_logo,linkedin_logo,twitter_logo
     }
+  },
+  mounted() {
+    // Load hero background asynchronously after LCP
+    this.loadHeroBackground()
   },
   methods: {
     updateCheck(event){
@@ -211,28 +216,53 @@ export default{
         },200)
       }
     },
-    async sendData(event){
-      if(event.target.id==='enroll-form'){
-        const response = await axios.post(
-        `${process.env.VUE_APP_FASTAPI_BASE_URL}/enroll`,
-        { email : this.email, 
-          name : this.name
-        })
-        this.alertText = response.data.message
-        setTimeout(() => {
-          this.alertText = null
-        },5000);
+    async loadHeroBackground() {
+      // Load background image after hero text is painted
+      try {
+        const img = new Image()
+        img.onload = () => {
+          this.heroBackgroundLoaded = true
+          const heroBackground = document.querySelector('.hero-background')
+          if (heroBackground) {
+            heroBackground.style.backgroundImage = `url(${require('@/assets/home/theme_bkgd.png')})`
+          }
+        }
+        img.src = require('@/assets/home/theme_bkgd.png')
+      } catch (error) {
+        console.warn('Hero background failed to load:', error)
       }
-      else if(event.target.id==='suggestion-form'){
-        const response = await axios.post(
-        `${process.env.VUE_APP_FASTAPI_BASE_URL}/submit_suggestion`,
-        { email : this.email, 
-          suggestion : this.suggestion
-        })
-        this.alertText = response.data.message
-        setTimeout(() => {
-          this.alertText = null
-        },5000);
+    },
+    async sendData(event){
+      try {
+        // Lazy load axios only when needed
+        const { default: axios } = await import('axios')
+        
+        if(event.target.id==='enroll-form'){
+          const response = await axios.post(
+          `${process.env.VUE_APP_FASTAPI_BASE_URL}/enroll`,
+          { email : this.email, 
+            name : this.name
+          })
+          this.alertText = response.data.message
+          setTimeout(() => {
+            this.alertText = null
+          },5000);
+        }
+        else if(event.target.id==='suggestion-form'){
+          const response = await axios.post(
+          `${process.env.VUE_APP_FASTAPI_BASE_URL}/submit_suggestion`,
+          { email : this.email, 
+            suggestion : this.suggestion
+          })
+          this.alertText = response.data.message
+          setTimeout(() => {
+            this.alertText = null
+          },5000);
+        }
+      } catch (error) {
+        console.error('Form submission error:', error)
+        this.alertText = 'Something went wrong. Please try again.'
+        setTimeout(() => this.alertText = null, 5000)
       }
     },
     redirectToEmail(){
@@ -277,12 +307,18 @@ export default{
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("../assets/home/theme_bkgd.png");
+  /* Start with solid color for immediate paint */
+  background: rgba(26, 26, 26, 0.8);
   background-size: cover;
   background-position: 15% center;
   background-repeat: no-repeat;
   opacity: 0.2;
   z-index: -1;
+  transition: opacity 0.5s ease;
+}
+
+.hero-background.background-loaded {
+  opacity: 0.2;
 }
 
 .hero-content {
@@ -302,16 +338,20 @@ export default{
 }
 
 .hero-title {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Critical font with fallback for immediate paint */
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 800;
   color: white;
-  opacity : 0.7;
+  opacity: 0.9; /* Increased for better visibility */
   margin: 0 auto 0.5rem auto;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   letter-spacing: -0.02em;
   text-align: center;
   width: 100%;
+  /* Optimize for paint performance */
+  will-change: auto;
+  contain: layout style paint;
 }
 
 .hero-subtitle {
